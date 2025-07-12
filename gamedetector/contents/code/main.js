@@ -42,10 +42,12 @@ function setup(window) {
             if (window.fullScreen) {
                 if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
                     print(" Is fullscreen? " + window.fullScreen + " Is blacklist? true prev: " + prev + " name: " + window.resourceClass.toString());
-                    if (prev != "7" && prev != "0") {
+                    if (prev != "7") {
                         if (window.resourceClass.toString() == "firefox") {
-                            callHIDService("7",window.resourceClass.toString());
-                            prev = "7"
+                            if (prev != "0") {
+                                callHIDService("7",window.resourceClass.toString());
+                                prev = "7"
+                            }
                         }
                         else if (prev != "6") {
                             callHIDService("6",window.resourceClass.toString());
@@ -88,10 +90,12 @@ function setup(window) {
                 }
             }
             else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
-                if (prev != "7" && prev != "0") {
+                if (prev != "7") {
                     if (window.resourceClass.toString() == "firefox") {
-                        callHIDService("7",window.resourceClass.toString());
-                        prev = "7"
+                        if (prev != "0") {
+                            callHIDService("7",window.resourceClass.toString());
+                            prev = "7"
+                        }
                     }
                     else if (prev != "6") {
                         callHIDService("6",window.resourceClass.toString());
@@ -110,10 +114,12 @@ function setup(window) {
             if (window.fullScreen) {
                 if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
                     print(" Is fullscreen? " + window.fullScreen + " Is blacklist? true prev: " + prev + " name: " + window.resourceClass.toString());
-                    if (prev != "7" && prev != "0") {
+                    if (prev != "7") {
                         if (window.resourceClass.toString() == "firefox") {
-                            callHIDService("7",window.resourceClass.toString());
-                            prev = "7"
+                            if (prev != "0") {
+                                callHIDService("7",window.resourceClass.toString());
+                                prev = "7"
+                            }
                         }
                         else if (prev != "6") {
                             callHIDService("6",window.resourceClass.toString());
@@ -158,8 +164,10 @@ function setup(window) {
             else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
                 if (prev != "7" && prev != "0") {
                     if (window.resourceClass.toString() == "firefox") {
-                        callHIDService("7",window.resourceClass.toString());
-                        prev = "7"
+                        if (prev != "0") {
+                            callHIDService("7",window.resourceClass.toString());
+                            prev = "7"
+                        }
                     }
                     else if (prev != "6") {
                         callHIDService("6",window.resourceClass.toString());
