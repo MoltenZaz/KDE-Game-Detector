@@ -104,6 +104,34 @@
      </item>
     </layout>
    </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="kcfg_FullyIgnore">
+     <property name="text">
+      <string>Fully Ignore</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="kcfg_Ignorelist">
+       <property name="visible">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>Comma separated list of window classes</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="fullyignoreLabel">
+       <property name="text">
+        <string>None</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <resources/>
@@ -191,7 +219,39 @@
   <connection>
    <sender>kcfg_NoArrows</sender>
    <signal>toggled(bool)</signal>
-   <receiver>ignoreLabel</receiver>
+   <receiver>noarrowsLabel</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>51</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>327</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_FullyIgnore</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>kcfg_Ignorelist</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>44</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>111</x>
+     <y>45</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kcfg_FullyIgnore</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>fullyignoreLabel</receiver>
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">

@@ -22,6 +22,11 @@ var greylist = readConfig("Greylist", "").toString().toLowerCase().split(",");
 for (i = 0; i < greylist.length; ++i)
     greylist[i] = greylist[i].trim();
 
+var FullyIgnore = readConfig("FullyIgnore", false);
+var ignorelist = readConfig("Ignorelist", "").toString().toLowerCase().split(",");
+for (i = 0; i < ignorelist.length; ++i)
+    ignorelist[i] = ignorelist[i].trim();
+
 function isVideoPlayer(client) {
     if (ignore == true && blacklist.indexOf(client.resourceClass.toString()) > -1)
         return false; // required blacklist match hit
@@ -29,6 +34,8 @@ function isVideoPlayer(client) {
         return true; // whitelist match hit
     if (NoArrows == true && greylist.indexOf(client.resourceClass.toString()) > -1)
         return true; // greylist match hit
+    if (FullyIgnore == true && ignorelist.indexOf(client.resourceClass.toString()) > -1)
+        return true; // fullyignore match hit
     // if (applyTo == true && whitelist.indexOf(client.resourceClass.toString()) < 0)
     //     return false; // required whitelist match failed
     // if (ignore == true && blacklist.indexOf(client.resourceClass.toString()) > -1)
@@ -40,10 +47,17 @@ function setup(window) {
     // window.fullScreenChanged.connect(() => {
         if (window) {
             if (window.fullScreen) {
-                if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
+                if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
+                    print(" Is fullscreen? " + window.fullScreen + " Is ignorelist? true prev: " + prev + " name: " + window.resourceClass.toString());
+                    if (prev != "0") {
+                        callHIDService("7",window.resourceClass.toString());
+                        prev = "7"
+                    }
+                }
+                else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
                     print(" Is fullscreen? " + window.fullScreen + " Is blacklist? true prev: " + prev + " name: " + window.resourceClass.toString());
                     if (prev != "7") {
-                        if (window.resourceClass.toString() == "firefox") {
+                        if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
                             if (prev != "0") {
                                 callHIDService("7",window.resourceClass.toString());
                                 prev = "7"
@@ -91,7 +105,7 @@ function setup(window) {
             }
             else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
                 if (prev != "7") {
-                    if (window.resourceClass.toString() == "firefox") {
+                    if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
                         if (prev != "0") {
                             callHIDService("7",window.resourceClass.toString());
                             prev = "7"
@@ -112,10 +126,17 @@ function setup(window) {
             }
             window.fullScreenChanged.connect(() => {
             if (window.fullScreen) {
-                if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
+                if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
+                    print(" Is fullscreen? " + window.fullScreen + " Is ignorelist? true prev: " + prev + " name: " + window.resourceClass.toString());
+                    if (prev != "0") {
+                        callHIDService("7",window.resourceClass.toString());
+                        prev = "7"
+                    }
+                }
+                else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
                     print(" Is fullscreen? " + window.fullScreen + " Is blacklist? true prev: " + prev + " name: " + window.resourceClass.toString());
                     if (prev != "7") {
-                        if (window.resourceClass.toString() == "firefox") {
+                        if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
                             if (prev != "0") {
                                 callHIDService("7",window.resourceClass.toString());
                                 prev = "7"
@@ -163,7 +184,7 @@ function setup(window) {
             }
             else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
                 if (prev != "7" && prev != "0") {
-                    if (window.resourceClass.toString() == "firefox") {
+                    if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
                         if (prev != "0") {
                             callHIDService("7",window.resourceClass.toString());
                             prev = "7"
