@@ -30,7 +30,7 @@ class HIDExecutor(dbus.service.Object):
         super().__init__(bus, object_path)
         # path = find_hidraw(0x1D50, 0x615E, serial="F35B1B161178540A")
         # print("Opening HID raw device at", path)
-        self.hid_fd = os.open("/dev/hidraw1", os.O_RDWR | os.O_NONBLOCK)
+        self.hid_fd = os.open("/dev/mykeyboard", os.O_RDWR | os.O_NONBLOCK)
 
     @dbus.service.method(INTERFACE_NAME, in_signature="s", out_signature="s")
     def Execute(self, value):
