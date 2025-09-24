@@ -70,12 +70,12 @@ class HIDExecutor(dbus.service.Object):
             # subprocess.run(fullscreenmouse, check=True)
             # subprocess.run(reloadmouse, check=True)
         elif received == "7":
-            hid_output = "0,0"
+            hid_output = "4,4"
             received = "0"
             # subprocess.run(fullscreenmouse, check=True)
             # subprocess.run(reloadmouse, check=True)
         else:
-            hid_output = "0,0"
+            hid_output = "4,4"
             # print("before run")
             # subprocess.run(normalmouse, check=True)
             # print("after 1st run")
@@ -90,35 +90,35 @@ class HIDExecutor(dbus.service.Object):
 
         # Build the command.
         # UPDATE VISUDO WITH PATH TO HIDAPITESTER!!
-        command = [
-            "kstart5", "--",
-            "/bin/sh", "-c",
-            "sudo -n /home/mitchell/Documents/KWinScripts/gamedetectorhelper/hidapitester --quiet --vidpid 1D50/615E --usage 0x61 --usagePage 0xFF60 --serial F35B1B161178540A --length 2 --open --send-output " + hid_output
-        ]
-
-        fullscreenmouse = [
-            "kstart5", "--",
-            "/bin/sh", "-c",
-            "sudo cp /home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf /etc/keyd/default.conf"
-        ]
-
-        normalmouse = [
-            "kstart5", "--",
-            "/bin/sh", "-c",
-            "sudo cp /home/mitchell/Documents/KWinScripts/gamedetectorhelper/normal.conf /etc/keyd/default.conf"
-        ]
-
-        reloadmouse = [
-            "kstart5", "--",
-            "/bin/sh", "-c",
-            "sudo keyd reload"
-        ]
-
-        guiltygear = [
-            "kstart5", "--",
-            "/bin/sh", "-c",
-            "sudo cp /home/mitchell/Documents/KWinScripts/gamedetectorhelper/guiltygear.conf /etc/keyd/default.conf"
-        ]
+        # command = [
+        #     "kstart5", "--",
+        #     "/bin/sh", "-c",
+        #     "sudo -n /home/mitchell/Documents/KWinScripts/gamedetectorhelper/hidapitester --quiet --vidpid 1D50/615E --usage 0x61 --usagePage 0xFF60 --serial F35B1B161178540A --length 2 --open --send-output " + hid_output
+        # ]
+        #
+        # fullscreenmouse = [
+        #     "kstart5", "--",
+        #     "/bin/sh", "-c",
+        #     "sudo cp /home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf /etc/keyd/default.conf"
+        # ]
+        #
+        # normalmouse = [
+        #     "kstart5", "--",
+        #     "/bin/sh", "-c",
+        #     "sudo cp /home/mitchell/Documents/KWinScripts/gamedetectorhelper/normal.conf /etc/keyd/default.conf"
+        # ]
+        #
+        # reloadmouse = [
+        #     "kstart5", "--",
+        #     "/bin/sh", "-c",
+        #     "sudo keyd reload"
+        # ]
+        #
+        # guiltygear = [
+        #     "kstart5", "--",
+        #     "/bin/sh", "-c",
+        #     "sudo cp /home/mitchell/Documents/KWinScripts/gamedetectorhelper/guiltygear.conf /etc/keyd/default.conf"
+        # ]
 
         try:
             # Execute the command.
@@ -128,17 +128,14 @@ class HIDExecutor(dbus.service.Object):
                 # subprocess.run(command, check=True)
             print("after sending keyboard", time.time())
             if received == "1" or received == "2" or received == "6":
-                if window == "steam_app_1384160":
-                    shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/guiltygear.conf","/etc/keyd/default.conf")
-                    # subprocess.run(guiltygear, check=True)
-                else:
-                    shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf","/etc/keyd/default.conf")
-                    # subprocess.run(fullscreenmouse, check=True)
+                # if window == "steam_app_1384160":
+                #     shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/guiltygear.conf","/etc/keyd/default.conf")
+                # else:
+                #     shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf","/etc/keyd/default.conf")
+                shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf","/etc/keyd/default.conf")
             else:
                 shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/normal.conf","/etc/keyd/default.conf")
-                # subprocess.run(normalmouse, check=True)
             print("after sending before reloading", time.time())
-            # subprocess.run(reloadmouse, check=True)
             subprocess.run(["sudo","-n","keyd","reload"], check=True)
             print("after sending and reloading", time.time())
             return "HID command executed successfully with output " + hid_output

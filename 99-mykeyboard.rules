@@ -1,0 +1,6 @@
+SUBSYSTEM=="hidraw", \
+  ATTRS{idVendor}=="1d50", \
+  ATTRS{idProduct}=="615e", \
+  ATTRS{serial}=="F35B1B161178540A", \
+  ENV{ID_PATH}=="*1.1", \
+  SYMLINK+="mykeyboard"

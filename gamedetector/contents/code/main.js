@@ -47,72 +47,72 @@ function setup(window) {
     // window.fullScreenChanged.connect(() => {
         if (window) {
             if (window.fullScreen) {
-                if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
-                    print(" Is fullscreen? " + window.fullScreen + " Is ignorelist? true prev: " + prev + " name: " + window.resourceClass.toString());
+                if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
+                    print(" Is fullscreen? " + window.fullScreen + " Is ignorelist? true prev: " + prev + " name: " + window.resourceClass.toString().trim().toLowerCase());
                     if (prev != "0") {
-                        callHIDService("7",window.resourceClass.toString());
+                        callHIDService("7",window.resourceClass.toString().trim().toLowerCase());
                         prev = "7"
                     }
                 }
-                else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
-                    print(" Is fullscreen? " + window.fullScreen + " Is blacklist? true prev: " + prev + " name: " + window.resourceClass.toString());
+                else if (ignore == true && blacklist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
+                    print(" Is fullscreen? " + window.fullScreen + " Is blacklist? true prev: " + prev + " name: " + window.resourceClass.toString().trim().toLowerCase());
                     if (prev != "7") {
-                        if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
+                        if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                             if (prev != "0") {
-                                callHIDService("7",window.resourceClass.toString());
+                                callHIDService("7",window.resourceClass.toString().trim().toLowerCase());
                                 prev = "7"
                             }
                         }
                         else if (prev != "6") {
-                            callHIDService("6",window.resourceClass.toString());
+                            callHIDService("6",window.resourceClass.toString().trim().toLowerCase());
                             prev = "6"
                         }
                     }
                     else if (prev != "6") {
-                        callHIDService("6",window.resourceClass.toString());
+                        callHIDService("6",window.resourceClass.toString().trim().toLowerCase());
                         prev = "6"
                     }
                 }
                 else
                 {
-                    print(" Is fullscreen? " + window.fullScreen + " Is blacklist? false" + " name: " + window.resourceClass.toString());
+                    print(" Is fullscreen? " + window.fullScreen + " Is blacklist? false" + " name: " + window.resourceClass.toString().trim().toLowerCase());
                     if (prev != "1" && prev != "2") {
-                        callHIDService("1",window.resourceClass.toString());
+                        callHIDService("1",window.resourceClass.toString().trim().toLowerCase());
                         prev = "1"
                     }
-                    if (noarrows == true && greylist.indexOf(window.resourceClass.toString()) > -1) {
-                        print("Is greylist? true prev:" + prev);
+                    if (noarrows == true && greylist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
+                        print("Is greylist? true " + greylist.indexOf(window.resourceClass.toString().trim().toLowerCase()));
                         if (prev != "2") {
-                            callHIDService("2",window.resourceClass.toString());
+                            callHIDService("2",window.resourceClass.toString().trim().toLowerCase());
                             prev = "2"
                         }
                     }
                 }
             }
-            else if (applyTo == true && whitelist.indexOf(window.resourceClass.toString()) > -1) {
+            else if (applyTo == true && whitelist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                 print(" Is whitelist. prev:" + prev);
                 if (prev != "1" && prev != "2") {
-                    callHIDService("1",window.resourceClass.toString());
+                    callHIDService("1",window.resourceClass.toString().trim().toLowerCase());
                 }
                 prev = "1"
-                if (noarrows == true && greylist.indexOf(window.resourceClass.toString()) > -1) {
+                if (noarrows == true && greylist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                     print("Is greylist? true prev:" + prev);
                     if (prev != "2") {
-                        callHIDService("2",window.resourceClass.toString());
+                        callHIDService("2",window.resourceClass.toString().trim().toLowerCase());
                         prev = "2"
                     }
                 }
             }
-            else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
+            else if (ignore == true && blacklist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                 if (prev != "7") {
-                    if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
+                    if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                         if (prev != "0") {
-                            callHIDService("7",window.resourceClass.toString());
+                            callHIDService("7",window.resourceClass.toString().trim().toLowerCase());
                             prev = "7"
                         }
                     }
                     else if (prev != "6") {
-                        callHIDService("6",window.resourceClass.toString());
+                        callHIDService("6",window.resourceClass.toString().trim().toLowerCase());
                         prev = "6"
                     }
                 }
@@ -120,78 +120,78 @@ function setup(window) {
             else {
                 print(" Is fullscreen? " + window.fullScreen);
                 if (prev != "0" && prev != "7") {
-                    callHIDService("0",window.resourceClass.toString());
+                    callHIDService("0",window.resourceClass.toString().trim().toLowerCase());
                 }
                 prev = "0"
             }
             window.fullScreenChanged.connect(() => {
             if (window.fullScreen) {
-                if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
-                    print(" Is fullscreen? " + window.fullScreen + " Is ignorelist? true prev: " + prev + " name: " + window.resourceClass.toString());
+                if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
+                    print(" Is fullscreen? " + window.fullScreen + " Is ignorelist? true prev: " + prev + " name: " + window.resourceClass.toString().trim().toLowerCase());
                     if (prev != "0") {
-                        callHIDService("7",window.resourceClass.toString());
+                        callHIDService("7",window.resourceClass.toString().trim().toLowerCase());
                         prev = "7"
                     }
                 }
-                else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
-                    print(" Is fullscreen? " + window.fullScreen + " Is blacklist? true prev: " + prev + " name: " + window.resourceClass.toString());
+                else if (ignore == true && blacklist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
+                    print(" Is fullscreen? " + window.fullScreen + " Is blacklist? true prev: " + prev + " name: " + window.resourceClass.toString().trim().toLowerCase());
                     if (prev != "7") {
-                        if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
+                        if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                             if (prev != "0") {
-                                callHIDService("7",window.resourceClass.toString());
+                                callHIDService("7",window.resourceClass.toString().trim().toLowerCase());
                                 prev = "7"
                             }
                         }
                         else if (prev != "6") {
-                            callHIDService("6",window.resourceClass.toString());
+                            callHIDService("6",window.resourceClass.toString().trim().toLowerCase());
                             prev = "6"
                         }
                     }
                     else if (prev != "6") {
-                        callHIDService("6",window.resourceClass.toString());
+                        callHIDService("6",window.resourceClass.toString().trim().toLowerCase());
                         prev = "6"
                     }
                 }
                 else
                 {
-                    print(" Is fullscreen? " + window.fullScreen + " Is blacklist? false" + " name: " + window.resourceClass.toString());
+                    print(" Is fullscreen? " + window.fullScreen + " Is blacklist? false" + " name: " + window.resourceClass.toString().trim().toLowerCase());
                     if (prev != "1" && prev != "2") {
-                        callHIDService("1",window.resourceClass.toString());
+                        callHIDService("1",window.resourceClass.toString().trim().toLowerCase());
                         prev = "1"
                     }
-                    if (noarrows == true && greylist.indexOf(window.resourceClass.toString()) > -1) {
+                    if (noarrows == true && greylist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                         print("Is greylist? true prev:" + prev);
                         if (prev != "2") {
-                            callHIDService("2",window.resourceClass.toString());
+                            callHIDService("2",window.resourceClass.toString().trim().toLowerCase());
                             prev = "2"
                         }
                     }
                 }
             }
-            else if (applyTo == true && whitelist.indexOf(window.resourceClass.toString()) > -1) {
+            else if (applyTo == true && whitelist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                 print(" Is whitelist? prev:" + prev);
                 if (prev != "1" && prev != "2") {
-                    callHIDService("1",window.resourceClass.toString());
+                    callHIDService("1",window.resourceClass.toString().trim().toLowerCase());
                 }
                 prev = "1"
-                if (noarrows == true && greylist.indexOf(window.resourceClass.toString()) > -1) {
+                if (noarrows == true && greylist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                     print("Is greylist? true prev:" + prev);
                     if (prev != "2") {
-                        callHIDService("2",window.resourceClass.toString());
+                        callHIDService("2",window.resourceClass.toString().trim().toLowerCase());
                         prev = "2"
                     }
                 }
             }
-            else if (ignore == true && blacklist.indexOf(window.resourceClass.toString()) > -1) {
+            else if (ignore == true && blacklist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                 if (prev != "7" && prev != "0") {
-                    if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString()) > -1) {
+                    if (FullyIgnore == true && ignorelist.indexOf(window.resourceClass.toString().trim().toLowerCase()) > -1) {
                         if (prev != "0") {
-                            callHIDService("7",window.resourceClass.toString());
+                            callHIDService("7",window.resourceClass.toString().trim().toLowerCase());
                             prev = "7"
                         }
                     }
                     else if (prev != "6") {
-                        callHIDService("6",window.resourceClass.toString());
+                        callHIDService("6",window.resourceClass.toString().trim().toLowerCase());
                         prev = "6"
                     }
                 }
@@ -199,7 +199,7 @@ function setup(window) {
             else {
                 print(" Is fullscreen? " + window.fullScreen);
                 if (prev != "0" && prev != "7") {
-                    callHIDService("0",window.resourceClass.toString());
+                    callHIDService("0",window.resourceClass.toString().trim().toLowerCase());
                 }
                 prev = "0"
             }
