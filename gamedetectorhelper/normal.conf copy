@@ -10,9 +10,8 @@
 f23 = macro(C-S-u 200b space)
 numlock = calc
 f20 = layer(f20)
-mouse2 = overload(mouse2, mouse2)
+# f18 = mouse2
 # f17 = mouse1
-compose = layer(menu)
 
 [shift]
 f23 = macro(C-S-u 00b0 space)
@@ -26,23 +25,11 @@ scrollup = C-volumeup
 scrolldown = C-volumedown
 
 [meta]
-middlemouse = macro(M-leftmouse 50ms M-q)
+middlemouse = macro(M-leftmouse 100ms M-q)
 f18 = macro(M-leftmouse 50ms M-pageup)
 f17 = macro(M-leftmouse 50ms M-pagedown)
 scrollup = volumeup
 scrolldown = volumedown
-
-[menu]
-scrollup = volumeup
-scrolldown = volumedown
-
-[mouse2]
-scrollup = macro(M-leftmouse 50ms M-pageup)
-scrolldown = macro(M-middlemouse)
-mouse1 = leftshift
-leftmouse = M-leftmouse
-rightmouse = M-rightmouse
-middlemouse = macro(M-leftmouse 50ms M-q)
 
 [f20]
 scrollup = volumeup

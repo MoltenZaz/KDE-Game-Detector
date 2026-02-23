@@ -128,13 +128,15 @@ class HIDExecutor(dbus.service.Object):
                 # subprocess.run(command, check=True)
             print("after sending keyboard", time.time())
             if received == "1" or received == "2" or received == "6":
-                # if window == "steam_app_1384160":
-                #     shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/guiltygear.conf","/etc/keyd/default.conf")
-                # else:
-                #     shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf","/etc/keyd/default.conf")
-                shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf","/etc/keyd/default.conf")
+                if window == "steam_app_2357570":
+                    shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/overwatch.conf","/etc/keyd/default.conf")
+                else:
+                    shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf","/etc/keyd/default.conf")
+                    # subprocess.run(["solaar", "config", "G502 X PLUS", "DPI", "800"])
+                # shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/fullscreen.conf","/etc/keyd/default.conf")
             else:
                 shutil.copy("/home/mitchell/Documents/KWinScripts/gamedetectorhelper/normal.conf","/etc/keyd/default.conf")
+                # subprocess.run(["solaar", "config", "G502 X PLUS", "DPI", "800"])
             print("after sending before reloading", time.time())
             subprocess.run(["sudo","-n","keyd","reload"], check=True)
             print("after sending and reloading", time.time())
